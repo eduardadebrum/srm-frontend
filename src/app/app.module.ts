@@ -13,6 +13,7 @@ import {ReactiveFormsModule, } from "@angular/forms";
 import localePtBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { CurrencyMaskModule } from "ng2-currency-mask";
+import { HeaderComponent } from './header/header.component';
 
 registerLocaleData(localePtBr);
 
@@ -20,7 +21,8 @@ registerLocaleData(localePtBr);
   declarations: [
     AppComponent,
     ClienteListaComponent,
-    ClienteNovoComponent
+    ClienteNovoComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
