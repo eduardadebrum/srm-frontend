@@ -1,3 +1,18 @@
-<p>
-  cliente-lista works!
-</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Limte Crédito</th>
+      <th scope="col">Risco</th>
+      <th scope="col">Taxa Juros</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cliente of clientes">
+      <td>{{cliente.nome}}</td>
+      <td>{{cliente.limiteCredito}}</td>
+      <td>{{cliente.risco}}</td>
+      <td>{{cliente.nome}}</td>
+    </tr>
+  </tbody>
+</table>
