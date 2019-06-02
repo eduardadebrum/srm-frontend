@@ -1,3 +1,51 @@
-<p>
-  cliente-novo works!
-</p>
+<div class="col-md-6 offset-md-3">
+  <h2 class="text-center">Novo Cliente</h2>
+
+  <!-- {{form.valid}}
+  {{form.value | json}} -->
+
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()" >
+
+    <div class="form-group">
+      <label for="nome">Nome Cliente: </label>
+      <input type="text" class="form-control" name="nome" id="nome" formControlName="nome">
+
+      <div class="alert alert-danger" role="alert" 
+      *ngIf="addForm.controls['nome'].hasError('required') && addForm.controls['nome'].touched">
+        Nome do Cliente é obrigatório
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label for="nome">Limite de Crédito: </label>
+        <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" class="form-control" name="limiteCredito" id="limiteCredito" formControlName="limiteCredito"
+        [value]="addForm.get('limiteCredito').value | currency:'BRL':true">
+  
+        <div class="alert alert-danger" role="alert" *ngIf="addForm.controls['limiteCredito'].hasError('required') && addForm.controls['limiteCredito'].touched">
+          Limite Crédito é obrigatório
+        </div>
+      </div>
+
+    <div class="form-group">
+        <label for="nome">Riscos: </label>
+      <select class="form-control" formControlName="risco">
+        <option *ngFor="let risco of riscos">{{risco}}
+        </option>
+      </select>
+
+      <div class="alert alert-danger" role="alert" *ngIf="addForm.controls['risco'].hasError('required')">
+          Risco é obrigatório
+        </div>
+
+    </div>
+  
+    <div class="form-group">
+      <label>Taxa de Juros: {{getTaxa()}}</label>
+    </div>
+  
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" [disabled]="addForm.invalid">Cadastrar</button>
+    </div>
+
+  </form>
+</div>

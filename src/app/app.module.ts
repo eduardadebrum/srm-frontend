@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,6 +7,14 @@ import { ClienteListaComponent } from './cliente-lista/cliente-lista.component';
 import { ClienteNovoComponent } from './cliente-novo/cliente-novo.component';
 import { ClienteService } from './cliente.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import {ReactiveFormsModule, } from "@angular/forms";
+
+import localePtBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+import { CurrencyMaskModule } from "ng2-currency-mask";
+
+registerLocaleData(localePtBr);
 
 @NgModule({
   declarations: [
@@ -17,9 +25,12 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    CurrencyMaskModule
   ],
-  providers: [ClienteService],
+  providers: [ClienteService, { provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
