@@ -46,8 +46,9 @@ export class ClienteNovoComponent implements OnInit {
       .subscribe(data => {
         console.log(data);
       });
-    // this.createFormGroup(new Cliente());
-    // this.router.navigate(['list-user']);
+    this.createFormGroup(new Cliente());
+
+    alert('Cliente Cadastrado');
   }
 
   getTaxa() {
